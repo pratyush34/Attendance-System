@@ -1293,13 +1293,6 @@
 </head>
 <body>
 
-<div class="proxy-overlay" id="proxyOverlay" style="display:none">
-  <div class="proxy-panel">
-    <h1>Access Restricted</h1>
-    <p>Unauthorized access detected. Please open this application locally or from a trusted environment.</p>
-  </div>
-</div>
-
 <div class="login-screen" id="loginScreen">
   <div class="login-card">
     <div class="login-brand">
@@ -2171,17 +2164,6 @@ function setLoginMode(mode) {
   document.getElementById('studentTab').classList.toggle('active', mode === 'student');
   document.getElementById('adminForm').style.display = mode === 'admin' ? 'block' : 'none';
   document.getElementById('studentForm').style.display = mode === 'student' ? 'block' : 'none';
-}
-
-function checkProxy() {
-  if (window.top !== window.self) return false;
-  return true;
-}
-
-function blockProxyAccess() {
-  document.getElementById('proxyOverlay').style.display = 'flex';
-  document.getElementById('loginScreen').style.display = 'none';
-  document.getElementById('appShell').style.display = 'none';
 }
 
 function renderAppForRole() {
@@ -3278,11 +3260,6 @@ document.addEventListener('keydown', e => {
    INIT — runs once on page load
 ───────────────────────────────────────────── */
 (function init() {
-  if (!checkProxy()) {
-    blockProxyAccess();
-    return;
-  }
-
   updateTopbarDate();
   buildNumpad();
   applyTheme();
