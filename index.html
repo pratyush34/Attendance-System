@@ -2175,11 +2175,6 @@ function setLoginMode(mode) {
 
 function checkProxy() {
   if (window.top !== window.self) return false;
-  if (window.location.protocol.startsWith('http')) {
-    const host = window.location.hostname;
-    const allowed = ['localhost', '127.0.0.1'];
-    if (!allowed.includes(host)) return false;
-  }
   return true;
 }
 
